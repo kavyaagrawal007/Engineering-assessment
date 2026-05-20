@@ -1,0 +1,42 @@
+# Findings
+
+## Dataset Characteristics
+
+The dataset behaves like synthetic API telemetry data with balanced endpoint and status-code distributions.
+
+Endpoints observed:
+- analytics
+- billing
+- notifications
+- orders
+- products
+- search
+- users
+- webhooks
+- auth/login
+- auth/refresh
+
+## Significant Patterns
+
+### PATCH + 401
+Most statistically significant anomaly:
+- 17 occurrences
+- heavily associated with auth-related endpoints
+
+### 429 Responses
+Rate-limit responses showed strong association with:
+- user_segment = partner
+
+## Extraction Attempts
+
+Tried:
+- timestamp ordering
+- latency ordering
+- request size ordering
+- endpoint initial extraction
+- modulo transforms
+- unique tuple filtering
+- periodic stepping extraction
+- method + endpoint symbolic encoding
+
+No direct plaintext extraction was identified.
